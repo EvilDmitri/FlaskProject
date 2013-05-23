@@ -1,0 +1,28 @@
+mkdir ~/FlaskProject  (make the working directory)
+cd ~/FlaskProject
+virtualenv flaskenv (make virtual environment for Flask)
+
+. flaskenv/bin/activate
+pip install Flask
+
+mkdir FlaskApp
+cd FlaskApp
+
+Now with some text editor create a file flaskapp.py
+-------------------------------------
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
+
+---------------------------------------
+
+
+Run the application:
+~/FlaskProject/flaskenv/bin/python flaskapp.py
+
