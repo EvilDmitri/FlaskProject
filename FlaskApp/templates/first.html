@@ -1,12 +1,24 @@
-<html>
+<!DOCTYPE html>
 <head>
 <title>Run Your Function</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Bootstrap -->
-<link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+<link href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" rel="stylesheet" media="screen">
+<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
 </head>
 
   <body>
+      <div class='navbar navbar-inverse'>
+      <div class='navbar-inner nav-collapse' style="height: auto;">
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Page One</a></li>
+          <li><a href="#">Page Two</a></li>
+        </ul>
+      </div>
+    </div>
+
     <h1>Run you own script!</h1>
     <div class="btn-group">
     <button class="btn">Left</button>
@@ -14,13 +26,25 @@
     <button class="btn">Right</button>
     </div>
 
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-        <li><a tabindex="-1" href="#">Action</a></li>
-        <li><a tabindex="-1" href="#">Another action</a></li>
-        <li><a tabindex="-1" href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li><a tabindex="-1" href="#">Separated link</a></li>
+
+    <ul class="nav">
+    <li class="dropdown" id="fat-menu">
+        <a href="#fat-menu" class="dropdown-toggle" data-toggle="dropdown">
+            Аккаунт
+            <b class="caret"></b>
+        </a>
+
+        <ul class="dropdown-menu" role="menu">
+            <li><a tabindex="-1" href="#">Action</a></li>
+            <li><a tabindex="-1" href="#">Another action</a></li>
+            <li><a tabindex="-1" href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a tabindex="-1" href="#">Separated link</a></li>
+        </ul>
+    </li>
     </ul>
+
+
 
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
