@@ -19,31 +19,33 @@
       </div>
     </div>
 
-    <h1>Run you own script!</h1>
-    <div class="btn-group">
-    <button class="btn">Left</button>
-    <button class="btn">Middle</button>
-    <button class="btn">Right</button>
+    <div class="page-header">
+    <h1>Run you own script! <small>And get the result immediately</small></h1>
     </div>
 
+    <div class="row">
+        <div class="span8">
+            <div class="btn-group">
+                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                Function
+                <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                <!-- dropdown menu links -->
+                 <li><a tabindex="-1" href="#">Load</a></li>
+                 <li class="divider"></li>
+                 <li><a tabindex="-1" href="#">Save</a></li>
 
-    <ul class="nav">
-    <li class="dropdown" id="fat-menu">
-        <a href="#fat-menu" class="dropdown-toggle" data-toggle="dropdown">
-            Аккаунт
-            <b class="caret"></b>
-        </a>
+                </ul>
+            </div>
+            <br>
 
-        <ul class="dropdown-menu" role="menu">
-            <li><a tabindex="-1" href="#">Action</a></li>
-            <li><a tabindex="-1" href="#">Another action</a></li>
-            <li><a tabindex="-1" href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a tabindex="-1" href="#">Separated link</a></li>
-        </ul>
-    </li>
-    </ul>
+            <textarea name="user_functin" rows="10" cols="65" placeholder="Put your function here" resize='none'>
 
+            </textarea><br>
+<button class="btn-primary">Run</button>
+        </div>
+    </div>
 
 
     <script src="http://code.jquery.com/jquery.js"></script>
