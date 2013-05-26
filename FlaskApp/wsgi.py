@@ -52,6 +52,15 @@ def files():
     return render_template('file_list.html', files=files)
 
 
+@app.route("/files/delete")
+@app.route("/files/delete/<file_name>")
+def delete_file(file_name=None):
+    if file_name:
+        print file_name
+        os.remove('uploads/' + file_name)
+
+    return render_template('first.html', func='')
+
 
 @app.route("/hello")
 @app.route("/hello/<name>")
