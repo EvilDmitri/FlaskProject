@@ -1,54 +1,50 @@
-<!DOCTYPE html>
-<head>
-<title>Run Your Function</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-<!-- Bootstrap -->
-<link href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" rel="stylesheet" media="screen">
-<script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-</head>
-
-  <body>
-      <div class='navbar navbar-inverse'>
-      <div class='navbar-inner nav-collapse' style="height: auto;">
+{% block content %}
+<div class='navbar navbar-inverse'>
+    <div class='navbar-inner nav-collapse' style="height: auto;">
         <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Page One</a></li>
-          <li><a href="#">Page Two</a></li>
+            <li class="active"><a href="/">Home</a></li>
+{#            <li><a href="#">Page One</a></li>#}
+{#            <li><a href="#">Page Two</a></li>#}
         </ul>
-      </div>
     </div>
+</div>
 
-    <div class="page-header">
-    <h1>Run you own script! <small>And get the result immediately</small></h1>
+<div class="page-header">
+    <h2>Run your own script! <small>And get the result...</small></h2>
+</div>
+
+<div class="row">
+    <div class="span8">
+
+        <form action="" method=post enctype=multipart/form-data class="well" >
+            <label>Please specify a source file:
+            <input type=file name=file size="50">
+            </label>
+                <input type=submit value=Upload> or write it by hand
+        </form>
     </div>
+</div>
+<div class="row" >
+    <div class="span8">
 
-    <div class="row">
-        <div class="span8">
-            <div class="btn-group">
-                <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                Function
-                <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                <!-- dropdown menu links -->
-                 <li><a tabindex="-1" href="#">Load</a></li>
-                 <li class="divider"></li>
-                 <li><a tabindex="-1" href="#">Save</a></li>
 
-                </ul>
-            </div>
-            <br>
+        <form class="well" action="/result" method=post>
+            <label> Your current function:
+                <textarea class="span7" name="user_function" rows="15">{{ func }}</textarea>
+            </label>
 
-            <textarea name="user_functin" rows="10" cols="65" placeholder="Put your function here" resize='none'>
 
-            </textarea><br>
-<button class="btn-primary">Run</button>
-        </div>
+            <input type=submit value=Run class="btn-primary offset6">
+
+        </form>
+
+
+
+
     </div>
+</div>
 
 
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
-  </body>
-</html>
+{% endblock %}
