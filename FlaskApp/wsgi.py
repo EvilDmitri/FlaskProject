@@ -17,21 +17,20 @@ def allowed_file(filename):
 
 @app.route("/", methods=['GET', 'POST'])
 def first():
+
     if request.method == 'POST':
 
         file_func = request.files['file']
         if file_func and allowed_file(file_func.filename):
             filename = file_func.filename
             file_func.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
+            return redirect('/')
 
-            with(open(os.path.join(app.config['UPLOAD_FOLDER'],filename))) as f:
-                func_body = f.readlines()
-                return render_template('first.html', func=func_body)
         else:
-            func_body = 'Only .py and .txt files allowed'
-            return render_template('first.html', func=func_body)
+            return redirect('/')
 
-    return render_template('first.html', func='')
+    files = os.listdir('uploads')
+    return render_template('first.html', files=files)
 
 
 @app.route('/result', methods=['GET', 'POST'])
@@ -46,11 +45,6 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
-@app.route('/files')
-def files():
-    files = os.listdir('uploads')
-    return render_template('file_list.html', files=files)
-
 
 @app.route("/files/delete")
 @app.route("/files/delete/<file_name>")
@@ -59,13 +53,7 @@ def delete_file(file_name=None):
         print file_name
         os.remove('uploads/' + file_name)
 
-    return render_template('first.html', func='')
-
-
-@app.route("/hello")
-@app.route("/hello/<name>")
-def hello(name=None):
-    return render_template('hello.html', name=name)
+    return redirect('/')
 
 
 if __name__ == "__main__":
