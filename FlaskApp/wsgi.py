@@ -4,7 +4,7 @@ from flask import Flask, Request, Response, render_template, request, redirect, 
 
 
 UPLOAD_FOLDER = 'uploads'
-ALLOWED_EXTENSIONS = set(['txt', 'py'])
+ALLOWED_EXTENSIONS = set(['py'])
 
 application = app = Flask(__name__)
 
@@ -33,8 +33,12 @@ def first():
     return render_template('first.html', files=files)
 
 
-@app.route('/result', methods=['GET', 'POST'])
-def result():
+from modules.parser import parse
+
+@app.route('/run/<file_to_run>', methods=['GET', 'POST'])
+def result(file_to_run):
+    parse('uploads/' + file_to_run)
+
     return 'Under construction'
 
 
@@ -57,4 +61,5 @@ def delete_file(file_name=None):
 
 
 if __name__ == "__main__":
+    app.debug=True
     app.run()
